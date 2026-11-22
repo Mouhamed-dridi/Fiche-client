@@ -3,294 +3,414 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Support Helpdesk Agency — Assistance informatique pour PME</title>
-<meta name="description" content="Support informatique, maintenance, conseil en infrastructure et coordination FAI pour les petites et moyennes organisations. Pratique, clair et responsable.">
+<title>Support Helpdesk Agency — L'informatique de votre PME sous contrôle</title>
+<meta name="description" content="Helpdesk à distance et sur site, maintenance, conseil en infrastructure et coordination FAI pour les petites et moyennes organisations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#0a1a3a; --navy2:#12285a; --ink:#16213a; --muted:#5b6780;
-    --line:#e3e8f2; --soft:#f5f7fc; --accent:#ff6a3d; --accent-d:#e5522a; --white:#fff;
-    --r:16px;
-  }
-  *{box-sizing:border-box;margin:0}
-  html{scroll-behavior:smooth}
-  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#fff}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-  h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
-  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:.98rem;transition:.2s;border:2px solid transparent;cursor:pointer}
-  .btn-primary{background:var(--accent);color:#fff}
-  .btn-primary:hover{background:var(--accent-d);transform:translateY(-1px)}
-  .btn-ghost{border-color:rgba(255,255,255,.35);color:#fff}
-  .btn-ghost:hover{background:rgba(255,255,255,.1)}
-  .btn-dark{background:var(--navy);color:#fff}
-  .btn-dark:hover{background:var(--navy2)}
+:root{
+  --bg:#fafaff; --ink:#0b1020; --ink2:#2a3350; --muted:#667090; --line:#e6e8f4;
+  --p1:#4f46e5; --p2:#7c3aed; --grad:linear-gradient(135deg,#4f46e5,#7c3aed 60%,#c026d3);
+  --ok:#10b981; --warn:#f59e0b; --dark:#0b1020; --r:22px;
+  --font:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{letter-spacing:-.035em;line-height:1.08}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.8rem;font-weight:600;color:var(--ink2);box-shadow:0 1px 2px rgba(20,20,60,.04)}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(16,185,129,.18)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:14px;font-weight:700;font-size:.97rem;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;font-family:inherit}
+.btn-main{background:var(--ink);color:#fff;box-shadow:0 10px 24px -10px rgba(11,16,32,.6)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(11,16,32,.55)}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:0 14px 30px -12px rgba(124,58,237,.7)}
+.btn-grad:hover{transform:translateY(-2px)}
+.btn-line{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-line:hover{border-color:#c9cdea;transform:translateY(-2px)}
+.sec{padding:110px 0}
+.head{text-align:center;max-width:720px;margin:0 auto 64px}
+.head h2{font-size:clamp(2rem,4.2vw,3.2rem);font-weight:800;margin:18px 0 16px}
+.head p{color:var(--muted);font-size:1.1rem}
 
-  /* NAV */
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,26,58,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.05rem}
-  .logo i{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-style:normal}
-  .links{display:flex;gap:30px;align-items:center}
-  .links a{color:#c9d3ea;font-size:.93rem;font-weight:500}
-  .links a:hover{color:#fff}
-  .links .btn{padding:10px 20px;color:#fff;font-size:.9rem}
-  @media(max-width:860px){.links a:not(.btn){display:none}}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
 
-  /* HERO */
-  .hero{background:radial-gradient(1200px 500px at 85% -10%,#1d3a82 0%,transparent 60%),var(--navy);color:#fff;padding:96px 0 120px;position:relative;overflow:hidden}
-  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-  .hero h1{font-size:clamp(2.3rem,5vw,3.8rem);font-weight:800}
-  .hero h1 em{font-style:normal;color:var(--accent)}
-  .hero p.lead{margin:22px 0 34px;font-size:1.15rem;color:#c3cde6;max-width:560px}
-  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
-  .panel{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:28px;backdrop-filter:blur(6px)}
-  .panel h3{font-size:1rem;margin-bottom:18px;color:#fff}
-  .ticket{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)}
-  .ticket:first-of-type{border-top:0}
-  .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:8px;flex:none}
-  .dot.g{background:#37d39a}.dot.y{background:#ffc547}
-  .ticket b{display:block;font-size:.95rem}
-  .ticket span{font-size:.84rem;color:#a9b6d6}
-  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.panel{display:none}.hero{padding:64px 0 80px}}
+/* NAV */
+nav{position:fixed;top:14px;left:0;right:0;z-index:100}
+.nav{max-width:1200px;margin:0 auto;padding:0 24px}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 12px 0 20px;background:rgba(255,255,255,.78);backdrop-filter:saturate(1.6) blur(16px);border:1px solid rgba(230,232,244,.9);border-radius:18px;box-shadow:0 8px 30px -14px rgba(20,20,60,.25)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
+.logo b{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:.95rem}
+.menu{display:flex;gap:6px;align-items:center}
+.menu a.l{padding:9px 14px;border-radius:10px;font-size:.92rem;font-weight:600;color:var(--ink2)}
+.menu a.l:hover{background:#f0f1fb}
+.menu .btn{padding:11px 20px;font-size:.9rem;margin-left:8px}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:1.1rem}
+@media(max-width:860px){
+  .burger{display:block}
+  .menu{position:absolute;top:76px;left:24px;right:24px;flex-direction:column;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:0 20px 40px -16px rgba(20,20,60,.3);display:none}
+  .menu.open{display:flex}
+  .menu .btn{margin:6px 0 0}
+}
 
-  /* STATS */
-  .stats{margin-top:-56px;position:relative;z-index:2;background:linear-gradient(to bottom,transparent 56px,var(--soft) 56px)}
-  .stats .box{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 20px 50px -20px rgba(10,26,58,.25);display:grid;grid-template-columns:repeat(4,1fr)}
-  .stat{padding:28px 26px;border-left:1px solid var(--line)}
-  .stat:first-child{border-left:0}
-  .stat b{display:block;font-size:1.5rem;letter-spacing:-.02em;color:var(--navy)}
-  .stat span{font-size:.88rem;color:var(--muted)}
-  @media(max-width:800px){.stats .box{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
+/* HERO */
+.hero{position:relative;padding:170px 0 60px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 15% 10%,rgba(79,70,229,.16),transparent 70%),
+  radial-gradient(600px 420px at 85% 5%,rgba(192,38,211,.14),transparent 70%),
+  linear-gradient(var(--line) 1px,transparent 1px) 0 0/72px 72px,
+  linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/72px 72px;
+  -webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent);opacity:.9;pointer-events:none}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5rem);font-weight:800;max-width:960px;margin:26px auto 24px}
+.hero p.lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);max-width:660px;margin:0 auto 38px}
+.hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .note{margin-top:18px;font-size:.85rem;color:var(--muted)}
 
-  section{padding:96px 0}
-  .head{max-width:680px;margin-bottom:52px}
-  .head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;color:var(--navy)}
-  .head p{margin-top:14px;color:var(--muted);font-size:1.05rem}
+/* DASH MOCK */
+.mock{position:relative;max-width:1020px;margin:70px auto 0;border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:0 50px 100px -40px rgba(60,40,160,.45),0 0 0 8px rgba(255,255,255,.6);text-align:left}
+.mock .top{border-radius:26px 26px 0 0;display:flex;align-items:center;gap:8px;padding:14px 20px;border-bottom:1px solid var(--line);background:#fcfcff}
+.mock .top i{width:11px;height:11px;border-radius:50%;background:#e1e4f3}
+.mock .top span{margin-left:12px;font-size:.8rem;color:var(--muted);font-weight:600}
+.mock .body{display:grid;grid-template-columns:.9fr 1.6fr;border-radius:0 0 26px 26px;overflow:hidden}
+.side{padding:22px;border-right:1px solid var(--line);background:#fbfbff}
+.side h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:14px}
+.kpi{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);margin-bottom:10px;font-size:.88rem;font-weight:600}
+.kpi em{font-style:normal;font-weight:800;font-size:1.05rem}
+.list{padding:22px}
+.row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+.av{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#fff;flex:none}
+.row div.t{flex:1;min-width:0}
+.row b{display:block;font-size:.93rem}
+.row small{color:var(--muted);font-size:.8rem}
+.pill{font-size:.72rem;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.pill.r{background:#fee2e2;color:#b91c1c}.pill.y{background:#fef3c7;color:#b45309}.pill.g{background:#d1fae5;color:#047857}.pill.b{background:#e0e7ff;color:#4338ca}
+.float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:0 20px 40px -18px rgba(40,30,120,.4);font-size:.82rem;font-weight:700;display:flex;gap:10px;align-items:center}
+.float.a{right:-18px;top:-22px}.float.b{left:-18px;bottom:-20px}
+@media(max-width:820px){.mock .body{grid-template-columns:1fr}.side{display:none}.float{display:none}}
 
-  /* PROBLEM */
-  .problem{background:var(--soft)}
-  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  .pcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px}
-  .pcard .n{font-size:.8rem;font-weight:800;color:var(--accent);letter-spacing:.1em}
-  .pcard p{margin-top:10px;font-size:.98rem;color:var(--ink)}
-  @media(max-width:900px){.pgrid{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.pgrid{grid-template-columns:1fr}}
+/* MARQUEE */
+.marq{padding:46px 0 10px;overflow:hidden}
+.marq p{text-align:center;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:700;margin-bottom:22px}
+.track{display:flex;gap:14px;width:max-content;animation:slide 38s linear infinite}
+.track span{padding:11px 22px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:600;font-size:.92rem;color:var(--ink2);white-space:nowrap}
+@keyframes slide{to{transform:translateX(-50%)}}
 
-  /* SERVICES */
-  .sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-  .scard{border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;background:#fff;transition:.25s;position:relative}
-  .scard:hover{transform:translateY(-6px);box-shadow:0 24px 40px -22px rgba(10,26,58,.35);border-color:transparent}
-  .ico{width:48px;height:48px;border-radius:14px;background:#fff1ec;color:var(--accent);display:grid;place-items:center;margin-bottom:20px}
-  .ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .scard h3{font-size:1.1rem;color:var(--navy);margin-bottom:8px}
-  .scard p{font-size:.92rem;color:var(--muted)}
-  @media(max-width:1000px){.sgrid{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.sgrid{grid-template-columns:1fr}}
+/* PROBLEM */
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden}
+.pi{padding:34px 28px;border-left:1px solid var(--line)}
+.pi:first-child{border-left:0}
+.pi .n{font-size:3rem;font-weight:800;letter-spacing:-.05em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.pi p{margin-top:16px;color:var(--ink2);font-size:.97rem}
+@media(max-width:900px){.pg{grid-template-columns:1fr 1fr}.pi:nth-child(3){border-left:0}.pi:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:560px){.pg{grid-template-columns:1fr}.pi{border-left:0!important;border-top:1px solid var(--line)}.pi:first-child{border-top:0}}
 
-  /* PROCESS */
-  .process{background:var(--navy);color:#fff}
-  .process .head h2{color:#fff}.process .head p{color:#b4c0dc}
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:s}
-  .step{padding:26px 22px;border-radius:var(--r);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);counter-increment:s}
-  .step::before{content:"0" counter(s);display:block;font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:14px}
-  .step p{font-size:.95rem;color:#d4dcf0}
-  @media(max-width:1000px){.steps{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.steps{grid-template-columns:1fr}}
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-5px);box-shadow:0 30px 50px -28px rgba(60,40,160,.4);border-color:#d5d8f3}
+.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
+.ico{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#eef0ff,#f6ecff);color:var(--p1);margin-bottom:22px}
+.ico svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.25rem;font-weight:700;margin-bottom:10px;letter-spacing:-.02em}
+.card p{color:var(--muted);font-size:.95rem}
+.card.feat{background:var(--dark);color:#fff;border-color:transparent}
+.card.feat p{color:#aab2d3}
+.card.feat .ico{background:rgba(255,255,255,.1);color:#c4b5fd}
+.card.feat::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.55),transparent 70%)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:999px;background:#f1f2fb;color:var(--ink2)}
+.card.feat .chips span{background:rgba(255,255,255,.1);color:#dcd6ff}
+@media(max-width:1000px){.c6,.c4,.c3{grid-column:span 6}}
+@media(max-width:620px){.c6,.c4,.c3{grid-column:span 12}}
 
-  /* SPLIT */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-  .card2{border-radius:24px;padding:40px}
-  .card2.a{background:var(--soft)}
-  .card2.b{background:#fff;border:1px solid var(--line)}
-  .card2 h3{font-size:1.4rem;color:var(--navy);margin-bottom:18px}
-  .card2 ul{list-style:none;padding:0}
-  .card2 li{display:flex;gap:12px;padding:10px 0;font-size:.97rem;border-top:1px solid rgba(10,26,58,.08)}
-  .card2 li:first-child{border-top:0}
-  .tick{flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.72rem;margin-top:2px}
-  .tick.x{background:var(--navy)}
-  @media(max-width:860px){.split{grid-template-columns:1fr}.card2{padding:28px}}
+/* PROCESS */
+.proc{background:var(--dark);color:#fff;border-radius:44px;margin:0 16px;position:relative;overflow:hidden}
+.proc::before{content:"";position:absolute;left:50%;top:-200px;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(closest-side,rgba(124,58,237,.5),transparent);pointer-events:none}
+.proc .head p{color:#aab2d3}
+.proc .tag{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#e5e7ff}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;position:relative}
+.steps::before{content:"";position:absolute;left:5%;right:5%;top:27px;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent)}
+.st{text-align:center;position:relative}
+.st .num{width:56px;height:56px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-weight:800;margin:0 auto 22px;box-shadow:0 0 0 8px rgba(124,58,237,.18)}
+.st p{color:#cdd3ee;font-size:.95rem;padding:0 6px}
+@media(max-width:900px){.steps{grid-template-columns:1fr;gap:30px}.steps::before{display:none}.st{display:flex;gap:18px;text-align:left;align-items:flex-start}.st .num{margin:0;flex:none}}
 
-  .who{padding-top:0}
-  .chips{display:flex;flex-wrap:wrap;gap:12px}
-  .chip{padding:12px 22px;border-radius:999px;border:1px solid var(--line);font-weight:600;color:var(--navy);background:#fff}
+/* TRUST */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:42px}
+.panel h3{font-size:1.5rem;margin-bottom:22px;font-weight:800}
+.panel li{list-style:none;display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line);color:var(--ink2);font-size:.97rem}
+.panel li:first-of-type{border-top:0}
+.ck{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:800;margin-top:2px;background:#d1fae5;color:#047857}
+.ck.w{background:#fef3c7;color:#b45309}
+@media(max-width:860px){.two{grid-template-columns:1fr}.panel{padding:28px}}
 
-  /* CTA */
-  .cta-band{padding:0 0 96px}
-  .band{background:linear-gradient(120deg,var(--navy),var(--navy2));border-radius:30px;padding:64px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
-  .band h2{font-size:clamp(1.7rem,3vw,2.4rem);max-width:600px}
-  .band p{color:#b9c5e2;margin-top:10px;max-width:560px}
-  @media(max-width:700px){.band{padding:36px 28px}}
+/* WHO + FAQ */
+.who{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.who span{padding:14px 26px;border-radius:16px;background:#fff;border:1px solid var(--line);font-weight:700;color:var(--ink2)}
+.faq{max-width:820px;margin:0 auto}
+details{background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:12px;padding:0 26px;transition:border-color .2s}
+details[open]{border-color:#c9cdf5}
+summary{list-style:none;cursor:pointer;padding:22px 0;font-weight:700;font-size:1.03rem;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;color:var(--p1);font-weight:500;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--muted)}
 
-  footer{background:var(--navy);color:#a9b6d6;padding:56px 0 30px;font-size:.92rem}
-  footer .top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
-  footer .logo{margin-bottom:12px}
-  footer .col a{display:block;padding:3px 0}
-  footer .col a:hover{color:#fff}
-  footer .bot{padding-top:22px;font-size:.84rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* CTA */
+.cta-box{position:relative;border-radius:40px;padding:90px 30px;text-align:center;color:#fff;background:var(--dark);overflow:hidden;margin:0 0 100px}
+.cta-box::before,.cta-box::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;filter:blur(40px)}
+.cta-box::before{left:-120px;bottom:-200px;background:rgba(79,70,229,.6)}
+.cta-box::after{right:-120px;top:-200px;background:rgba(192,38,211,.5)}
+.cta-box>*{position:relative;z-index:1}
+.cta-box h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:800;max-width:760px;margin:0 auto 18px}
+.cta-box p{color:#b9c0e0;max-width:560px;margin:0 auto 34px;font-size:1.08rem}
+.cta-box .btn-line{background:#fff;color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding:46px 0 36px;background:#fff}
+footer .in{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+footer p{color:var(--muted);font-size:.9rem;max-width:320px;margin-top:12px}
+footer .cols{display:flex;gap:56px}
+footer .cols a{display:block;padding:4px 0;color:var(--ink2);font-weight:500;font-size:.93rem}
+footer .cols a:hover{color:var(--p1)}
+footer .cp{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
+@media(prefers-reduced-motion:reduce){.track{animation:none}.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
-<nav><div class="wrap">
-  <a href="#top" class="logo"><i>⚙</i> Support Helpdesk Agency</a>
-  <div class="links">
-    <a href="#services">Services</a>
-    <a href="#methode">Méthode</a>
-    <a href="#principes">Engagements</a>
-    <a href="#clients">Clients</a>
-    <a href="/fiche.html" class="btn btn-primary">Demander une intervention</a>
+<nav><div class="nav"><div class="bar">
+  <a href="#top" class="logo"><b>S</b> Support Helpdesk Agency</a>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+  <div class="menu" id="menu">
+    <a class="l" href="#services">Services</a>
+    <a class="l" href="#methode">Méthode</a>
+    <a class="l" href="#engagements">Engagements</a>
+    <a class="l" href="#faq">FAQ</a>
+    <a class="btn btn-main" href="/fiche.html">Demander une intervention</a>
   </div>
-</div></nav>
+</div></div></nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <div>
-    <span class="eyebrow">Assistance informatique pour PME</span>
-    <h1>Votre informatique fonctionne. <em>Votre équipe aussi.</em></h1>
-    <p class="lead">Support à distance et sur site, maintenance, conseil en infrastructure et coordination avec votre fournisseur Internet. Une aide pratique, compréhensible et responsable, sans technicien à temps plein.</p>
-    <div class="cta">
-      <a href="/fiche.html" class="btn btn-primary">Remplir la fiche client →</a>
-      <a href="#services" class="btn btn-ghost">Voir nos services</a>
-    </div>
+  <span class="tag"><i></i> Helpdesk · Maintenance · Conseil IT pour PME</span>
+  <h1>L'informatique de votre PME, <span class="grad">enfin sous contrôle.</span></h1>
+  <p class="lead">Un support technique clair, structuré et responsable. À distance ou sur site, nous diagnostiquons, convenons du périmètre, intervenons et vous remettons un rapport, sans technicien à temps plein.</p>
+  <div class="cta">
+    <a href="/fiche.html" class="btn btn-grad">Remplir la fiche client →</a>
+    <a href="#services" class="btn btn-line">Découvrir les services</a>
   </div>
-  <aside class="panel" aria-hidden="true">
-    <h3>Exemples de demandes traitées</h3>
-    <div class="ticket"><i class="dot"></i><div><b>Poste bloqué au démarrage</b><span>Diagnostic à distance · urgence élevée</span></div></div>
-    <div class="ticket"><i class="dot y"></i><div><b>Imprimante réseau hors ligne</b><span>Intervention sur site planifiée</span></div></div>
-    <div class="ticket"><i class="dot g"></i><div><b>Remplacement de 6 PC</b><span>Cahier des charges et comparatif de devis</span></div></div>
-    <div class="ticket"><i class="dot y"></i><div><b>Coupure de connexion récurrente</b><span>Dossier technique transmis au FAI</span></div></div>
-  </aside>
+  <p class="note">Aucun accès à vos systèmes sans votre autorisation.</p>
+
+  <div class="mock rv" aria-hidden="true">
+    <div class="top"><i></i><i></i><i></i><span>File des demandes · exemple</span></div>
+    <div class="body">
+      <div class="side">
+        <h4>Aperçu</h4>
+        <div class="kpi">Urgentes <em style="color:#dc2626">2</em></div>
+        <div class="kpi">En cours <em style="color:#4f46e5">5</em></div>
+        <div class="kpi">À valider <em style="color:#d97706">3</em></div>
+        <div class="kpi">Clôturées <em style="color:#059669">18</em></div>
+      </div>
+      <div class="list">
+        <div class="row"><div class="av" style="background:#ef4444">PC</div><div class="t"><b>Poste bloqué au démarrage</b><small>Diagnostic à distance</small></div><span class="pill r">Urgent</span></div>
+        <div class="row"><div class="av" style="background:#f59e0b">IM</div><div class="t"><b>Imprimante réseau hors ligne</b><small>Intervention sur site</small></div><span class="pill y">Planifié</span></div>
+        <div class="row"><div class="av" style="background:#6366f1">FAI</div><div class="t"><b>Coupures de connexion récurrentes</b><small>Dossier technique envoyé au fournisseur</small></div><span class="pill b">Suivi FAI</span></div>
+        <div class="row"><div class="av" style="background:#10b981">AC</div><div class="t"><b>Renouvellement de 6 postes</b><small>Cahier des charges et comparatif de devis</small></div><span class="pill g">Devis validé</span></div>
+      </div>
+    </div>
+    <div class="float a"><span style="color:#10b981">●</span> Rapport d'intervention envoyé</div>
+    <div class="float b"><span style="color:#6366f1">●</span> Périmètre validé par le client</div>
+  </div>
 </div></header>
 
-<div class="stats"><div class="wrap"><div class="box">
-  <div class="stat"><b>8 services</b><span>du dépannage au conseil</span></div>
-  <div class="stat"><b>À distance & sur site</b><span>selon l'urgence et l'impact</span></div>
-  <div class="stat"><b>Périmètre validé</b><span>avant toute intervention</span></div>
-  <div class="stat"><b>Rapport écrit</b><span>après chaque intervention</span></div>
-</div></div></div>
+<div class="marq">
+  <p>Ce que nous prenons en charge</p>
+  <div class="track">
+    <span>Postes Windows</span><span>Imprimantes</span><span>Wi-Fi & LAN</span><span>E-mail & comptes</span><span>Routeurs & switchs</span><span>Topnet</span><span>GlobalNet</span><span>Logiciels métier</span><span>Maintenance préventive</span><span>Achat d'équipements</span>
+    <span>Postes Windows</span><span>Imprimantes</span><span>Wi-Fi & LAN</span><span>E-mail & comptes</span><span>Routeurs & switchs</span><span>Topnet</span><span>GlobalNet</span><span>Logiciels métier</span><span>Maintenance préventive</span><span>Achat d'équipements</span>
+  </div>
+</div>
 
-<section class="problem" style="padding-top:72px">
+<section class="sec">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Le problème</span>
-      <h2>Quand l'informatique s'arrête, l'activité aussi.</h2>
+    <div class="head rv">
+      <span class="tag">Le constat</span>
+      <h2>Quand l'informatique s'arrête, <span class="grad">l'activité aussi.</span></h2>
       <p>Les petites organisations n'ont souvent ni administrateur IT interne, ni processus de support structuré.</p>
     </div>
-    <div class="pgrid">
-      <div class="pcard"><div class="n">01</div><p>Les employés perdent du temps quand ordinateurs, imprimantes, réseaux ou logiciels métier tombent en panne.</p></div>
-      <div class="pcard"><div class="n">02</div><p>Sans technicien dédié, il n'existe ni suivi ni méthode pour traiter les incidents.</p></div>
-      <div class="pcard"><div class="n">03</div><p>Les achats et changements d'infrastructure coûtent cher lorsqu'ils se font sans évaluation technique.</p></div>
-      <div class="pcard"><div class="n">04</div><p>Les incidents côté fournisseur Internet sont longs à diagnostiquer, documenter et relancer.</p></div>
+    <div class="pg rv">
+      <div class="pi"><div class="n">01</div><p>Les employés perdent du temps dès qu'un ordinateur, une imprimante, le réseau ou un logiciel métier tombe en panne.</p></div>
+      <div class="pi"><div class="n">02</div><p>Sans technicien dédié, aucun suivi ni méthode pour traiter les incidents.</p></div>
+      <div class="pi"><div class="n">03</div><p>Achats et changements d'infrastructure coûtent cher sans évaluation technique préalable.</p></div>
+      <div class="pi"><div class="n">04</div><p>Les incidents côté fournisseur Internet sont longs à diagnostiquer, documenter et relancer.</p></div>
     </div>
   </div>
 </section>
 
-<section id="services">
+<section class="sec" id="services" style="padding-top:20px">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Nos services</span>
-      <h2>Tout ce dont une PME a besoin côté IT.</h2>
-      <p>Nous évaluons le problème, convenons du périmètre, réalisons le travail et vous communiquons le résultat.</p>
+    <div class="head rv">
+      <span class="tag">Services</span>
+      <h2>Huit services, <span class="grad">un seul interlocuteur.</span></h2>
+      <p>Nous évaluons le problème, convenons du périmètre, réalisons le travail et communiquons le résultat.</p>
     </div>
-    <div class="sgrid">
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3>Helpdesk à distance</h3><p>Diagnostic et assistance sur postes, système, applications, e-mail, comptes et connectivité.</p></article>
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>Support technique sur site</h3><p>Dépannage de postes, périphériques, imprimantes, contrôle du câblage et incidents côté utilisateur.</p></article>
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg></div><h3>Installation & renouvellement de PC</h3><p>Windows, pilotes, mises à jour, logiciels approuvés, migration de profils et contrôles finaux.</p></article>
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><h3>Conseil en infrastructure</h3><p>État des lieux, risques et points de blocage, feuille de route, documentation et recommandations.</p></article>
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg></div><h3>Aide à l'achat d'équipements</h3><p>Besoins, spécifications, comparaison de devis fournisseurs, compatibilité. Achat seulement après votre accord.</p></article>
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M2 9a15 15 0 0 1 20 0"/></svg></div><h3>Réseau & connectivité</h3><p>Dépannage LAN/Wi-Fi, configuration routeur et switch dans le cadre convenu, documentation des incidents.</p></article>
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Coordination FAI</h3><p>Dossier technique et suivi auprès de fournisseurs comme Topnet ou GlobalNet.</p></article>
-      <article class="scard"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Maintenance préventive</h3><p>Contrôles périodiques, planification des mises à jour, stockage, performances et rapport de maintenance.</p></article>
+    <div class="bento">
+      <article class="card feat c6 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+        <h3>Helpdesk à distance</h3>
+        <p>Diagnostic et assistance à distance pour les postes, le système, les applications, l'e-mail, les comptes et la connectivité.</p>
+        <div class="chips"><span>Postes</span><span>Applications</span><span>E-mail</span><span>Comptes</span><span>Connexion</span></div>
+      </article>
+      <article class="card c6 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
+        <h3>Support technique sur site</h3>
+        <p>Dépannage de postes, périphériques et imprimantes, contrôle du câblage et incidents côté utilisateur.</p>
+        <div class="chips"><span>Périphériques</span><span>Imprimantes</span><span>Câblage</span></div>
+      </article>
+      <article class="card c4 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg></div>
+        <h3>Installation & renouvellement de PC</h3>
+        <p>Windows, pilotes, mises à jour, logiciels approuvés, migration de profils convenue et contrôles finaux.</p>
+      </article>
+      <article class="card c4 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <h3>Conseil en infrastructure</h3>
+        <p>État des lieux, risques et points de blocage, feuille de route, documentation et recommandations.</p>
+      </article>
+      <article class="card c4 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg></div>
+        <h3>Aide à l'achat d'équipements</h3>
+        <p>Besoins, spécifications, comparaison de devis, compatibilité. Achat uniquement après votre accord.</p>
+      </article>
+      <article class="card c3 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M2 9a15 15 0 0 1 20 0"/></svg></div>
+        <h3>Réseau & connectivité</h3>
+        <p>LAN/Wi-Fi, routeur et switch dans le cadre convenu, incidents documentés.</p>
+      </article>
+      <article class="card c3 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Coordination FAI</h3>
+        <p>Dossier technique et suivi auprès de Topnet, GlobalNet et autres fournisseurs.</p>
+      </article>
+      <article class="card c6 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Maintenance préventive</h3>
+        <p>Contrôles périodiques convenus, planification des mises à jour, vérification du stockage et des performances, avec rapport de maintenance.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="process" id="methode">
+<section class="sec proc" id="methode">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Comment ça marche</span>
-      <h2>Cinq étapes, du premier contact au rapport.</h2>
-      <p>Un processus simple, pour que vous sachiez toujours où en est votre demande.</p>
+    <div class="head rv">
+      <span class="tag">Méthode</span>
+      <h2>De la demande au rapport, <span class="grad">en cinq étapes.</span></h2>
+      <p>Un processus simple pour que vous sachiez toujours où en est votre demande.</p>
     </div>
     <div class="steps">
-      <div class="step"><p>Vous envoyez votre demande avec le contexte de base.</p></div>
-      <div class="step"><p>Nous classons l'urgence et l'impact, et choisissons intervention à distance ou sur site.</p></div>
-      <div class="step"><p>Nous confirmons le périmètre, le coût estimé et les accès ou validations nécessaires.</p></div>
-      <div class="step"><p>Nous réalisons le travail convenu et vous tenons informé.</p></div>
-      <div class="step"><p>Vous recevez un court rapport, des recommandations et les actions de suivi.</p></div>
+      <div class="st rv"><div class="num">1</div><p>Vous envoyez votre demande avec le contexte de base.</p></div>
+      <div class="st rv"><div class="num">2</div><p>Nous évaluons l'urgence et l'impact, puis choisissons à distance ou sur site.</p></div>
+      <div class="st rv"><div class="num">3</div><p>Nous confirmons périmètre, coût estimé, accès et validations.</p></div>
+      <div class="st rv"><div class="num">4</div><p>Nous réalisons le travail convenu et vous tenons informé.</p></div>
+      <div class="st rv"><div class="num">5</div><p>Rapport d'intervention, recommandations et actions de suivi.</p></div>
     </div>
   </div>
 </section>
 
-<section id="principes">
+<section class="sec" id="engagements">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Nos engagements</span>
-      <h2>Clair sur ce que nous faisons, et sur ce que nous ne faisons pas.</h2>
+    <div class="head rv">
+      <span class="tag">Engagements</span>
+      <h2>Transparents sur ce que nous faisons, <span class="grad">et sur ce que nous ne faisons pas.</span></h2>
       <p>Nous ne promettons pas que chaque incident se règle à distance ou dans un délai fixe. Les cas complexes sont escaladés ou traités via une intervention validée séparément.</p>
     </div>
-    <div class="split">
-      <div class="card2 a">
-        <h3>Principes de travail</h3>
+    <div class="two">
+      <div class="panel rv">
+        <h3>Nos principes</h3>
         <ul>
-          <li><span class="tick">✓</span>Aucun accès à vos systèmes sans autorisation.</li>
-          <li><span class="tick">✓</span>Aucun achat, réinitialisation, suppression, formatage ou changement important sans accord explicite.</li>
-          <li><span class="tick">✓</span>Confidentialité des données et accès au strict nécessaire.</li>
-          <li><span class="tick">✓</span>Mots de passe partagés uniquement par un canal sécurisé convenu, jamais en clair par e-mail ou chat.</li>
-          <li><span class="tick">✓</span>Tout travail hors périmètre fait l'objet d'un nouveau devis ou d'un accord écrit.</li>
+          <li><span class="ck">✓</span>Aucun accès à vos systèmes sans autorisation.</li>
+          <li><span class="ck">✓</span>Aucun achat, réinitialisation, suppression, formatage ou changement important sans accord explicite.</li>
+          <li><span class="ck">✓</span>Confidentialité des données et accès au strict nécessaire.</li>
+          <li><span class="ck">✓</span>Mots de passe échangés uniquement par un canal sécurisé convenu, jamais en clair.</li>
+          <li><span class="ck">✓</span>Travail hors périmètre : nouveau devis ou accord écrit.</li>
         </ul>
       </div>
-      <div class="card2 b">
-        <h3>Limites importantes</h3>
+      <div class="panel rv">
+        <h3>Limites à connaître</h3>
         <ul>
-          <li><span class="tick x">!</span>Pièces de rechange, licences logicielles, abonnements FAI, déplacements hors zone, frais de tiers et grands projets : exclus sauf mention dans un devis.</li>
-          <li><span class="tick x">!</span>Les délais de réponse et le rétablissement du service par le fournisseur Internet ne dépendent pas de nous.</li>
-          <li><span class="tick x">!</span>La sauvegarde des données reste de la responsabilité du client, sauf service de sauvegarde convenu et testé.</li>
+          <li><span class="ck w">!</span>Exclus sauf mention dans un devis : pièces de rechange, licences logicielles, abonnements FAI, déplacements hors zone, frais de tiers et grands projets.</li>
+          <li><span class="ck w">!</span>Les délais de réponse et le rétablissement du service par le fournisseur Internet ne dépendent pas de nous.</li>
+          <li><span class="ck w">!</span>La sauvegarde des données reste de la responsabilité du client, sauf service de sauvegarde convenu et testé.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="who" id="clients">
+<section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Pour qui</span>
-      <h2>Les organisations qui ont besoin d'aide IT sans technicien interne.</h2>
+    <div class="head rv" style="margin-bottom:36px">
+      <span class="tag">Pour qui</span>
+      <h2>Pensé pour les organisations <span class="grad">sans équipe IT interne.</span></h2>
     </div>
-    <div class="chips">
-      <span class="chip">Petites et moyennes entreprises</span>
-      <span class="chip">Cabinets et bureaux</span>
-      <span class="chip">Commerces</span>
-      <span class="chip">Centres de formation</span>
-      <span class="chip">Organisations locales</span>
+    <div class="who rv">
+      <span>PME</span><span>Cabinets & bureaux</span><span>Commerces</span><span>Centres de formation</span><span>Organisations locales</span>
     </div>
   </div>
 </section>
 
-<div class="cta-band"><div class="wrap"><div class="band">
-  <div>
-    <h2>Un problème informatique ? Décrivez-le-nous.</h2>
-    <p>Remplissez la fiche client : environnement, symptômes, urgence. Nous revenons vers vous avec le périmètre et l'estimation.</p>
+<section class="sec" id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag">FAQ</span>
+      <h2>Questions fréquentes</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Comment demander une intervention ?</summary><p>Remplissez la fiche client en ligne : informations sur votre organisation, environnement informatique, symptômes et urgence. Nous classons la demande puis confirmons le périmètre et l'estimation avant d'intervenir.</p></details>
+      <details><summary>Intervenez-vous toujours à distance ?</summary><p>Non. Nous évaluons chaque cas : certaines demandes se règlent à distance, d'autres nécessitent un passage sur site ou une intervention validée séparément.</p></details>
+      <details><summary>Avez-vous accès à mes systèmes ?</summary><p>Uniquement avec votre autorisation, au strict nécessaire. Les mots de passe sont partagés par un canal sécurisé convenu, jamais en clair par e-mail ou chat.</p></details>
+      <details><summary>Achetez-vous le matériel à ma place ?</summary><p>Non, pas sans votre accord explicite. Nous vous aidons à définir le besoin, comparer les devis et vérifier la compatibilité ; l'achat se fait après validation.</p></details>
+      <details><summary>Qui s'occupe des sauvegardes ?</summary><p>La sauvegarde des données reste la responsabilité du client, sauf service de sauvegarde convenu et testé.</p></details>
+    </div>
   </div>
-  <a href="/fiche.html" class="btn btn-primary">Demander une intervention →</a>
-</div></div></div>
+</section>
+
+<div class="wrap"><div class="cta-box rv">
+  <h2>Un problème informatique ? <span class="grad" style="background:linear-gradient(135deg,#a5b4fc,#f0abfc);-webkit-background-clip:text;background-clip:text">Décrivez-le-nous.</span></h2>
+  <p>Remplissez la fiche client et recevez un périmètre clair et une estimation avant toute intervention.</p>
+  <a href="/fiche.html" class="btn btn-line">Demander une intervention →</a>
+</div></div>
 
 <footer><div class="wrap">
-  <div class="top">
+  <div class="in">
     <div>
-      <div class="logo"><i>⚙</i> Support Helpdesk Agency</div>
-      <p style="max-width:340px">Assistance informatique et conseil pour petites et moyennes organisations.</p>
+      <a href="#top" class="logo"><b>S</b> Support Helpdesk Agency</a>
+      <p>Assistance informatique et conseil pour petites et moyennes organisations.</p>
     </div>
-    <div class="col">
-      <a href="#services">Services</a>
-      <a href="#methode">Méthode</a>
-      <a href="#principes">Engagements</a>
-      <a href="/fiche.html">Fiche client</a>
+    <div class="cols">
+      <div><a href="#services">Services</a><a href="#methode">Méthode</a><a href="#engagements">Engagements</a></div>
+      <div><a href="#faq">FAQ</a><a href="/fiche.html">Fiche client</a></div>
     </div>
   </div>
-  <div class="bot"><span>© <span id="y"></span> Support Helpdesk Agency. Tous droits réservés.</span></div>
+  <div class="cp">© <span id="y"></span> Support Helpdesk Agency. Tous droits réservés.</div>
 </div></footer>
-<script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+
+<script>
+document.getElementById("y").textContent=new Date().getFullYear();
+const menu=document.getElementById("menu");
+document.getElementById("burger").onclick=()=>menu.classList.toggle("open");
+menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu.classList.remove("open")));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
